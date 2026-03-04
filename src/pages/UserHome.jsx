@@ -1,5 +1,8 @@
 import { useState } from "react";
 import UserAd from "../assets/UserAd.jpg"
+import { KeyFeaturesPage } from "../components/KeyFeaturesPage";
+import {AddOnServicesPage} from "../components/AddOnServicesPage";
+import { ExploreEventsPage } from "../components/ExploreEventsPage";
 const NAV_LINKS = ["Home", "Explore", "Booking", "Contact Us", "Resources", "Profile"];
 
 const FEATURES = [
@@ -33,7 +36,14 @@ const ADDONS = [
 ];
 
 export default function UserHome() {
+   const [showFeatures, setShowFeatures] = useState(false);
+   const [showAddons, setShowAddons] = useState(false);
+   const [showExplore, setShowExplore] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState("");
+
+  if (showFeatures) return <KeyFeaturesPage onBack={() => setShowFeatures(false)} />;
+  if (showAddons) return <AddOnServicesPage onBack={() => setShowAddons(false)} />;
+  if (showExplore) return <ExploreEventsPage onBack={() => setShowExplore(false)} />;
 
   return (
     <div style={{ fontFamily: "'Inter','Segoe UI',sans-serif", color: "#1a1a2e", background: "#fff", overflowX: "hidden" }}>
@@ -381,17 +391,26 @@ export default function UserHome() {
     </div>
 
     <div style={{textAlign:"center"}}>
-      <button style={{
-        background:"#9B8B82", color:"#fff",
-        border:"none", borderRadius:12,
-        padding:"14px 44px", fontSize:15, fontWeight:700,
-        cursor:"pointer", fontFamily:"inherit",
-        transition:"background 0.2s"
-      }}
-      onMouseOver={e=>e.currentTarget.style.background="#7d6e66"}
-      onMouseOut={e=>e.currentTarget.style.background="#9B8B82"}>
-        Learn More
-      </button>
+      <button
+  onClick={() => setShowFeatures(true)}
+  style={{
+    background:"#9B8B82",
+    color:"#fff",
+    border:"none",
+    borderRadius:12,
+    padding:"14px 44px",
+    fontSize:15,
+    fontWeight:700,
+    cursor:"pointer",
+    fontFamily:"inherit",
+    transition:"background 0.2s"
+  }}
+  onMouseOver={e=>e.currentTarget.style.background="#7d6e66"}
+  onMouseOut={e=>e.currentTarget.style.background="#9B8B82"}
+>
+  Learn More
+</button>
+      
     </div>
   </div>
 </section>
@@ -426,7 +445,7 @@ export default function UserHome() {
               </div>
             ))}
           </div>
-          <div style={{textAlign:"center"}}><button className="btn-o">Explore more</button></div>
+          <div style={{textAlign:"center"}}><button className="btn-o"onClick={() => setShowExplore(true)} >Explore more</button></div>
         </div>
       </section>
 
@@ -495,7 +514,7 @@ export default function UserHome() {
               </div>
             ))}
           </div>
-          <div style={{textAlign:"center"}}><button className="btn-o">See all</button></div>
+          <div style={{textAlign:"center"}}><button className="btn-o "onClick={() => setShowAddons(true)} >See all</button></div>
         </div>
       </section>
 
