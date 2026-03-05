@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import background from "../assets/background.png";
 
 const Business = () => {
+  const navigate = useNavigate();
   return (
     <section className=" pt-4 pb-16">
 
@@ -31,7 +33,7 @@ const Business = () => {
               Our platform helps operators easily publish events, accept bookings,
               and grow revenue. Join today and take your event business to the next level.
             </p>
-            <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition w-fit">
+            <button onClick={() => navigate("/operator")} className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition w-fit">
               Join as an operator
             </button>
           </div>
