@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const OperatorAuthModal = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState("signup");
+  const navigate = useNavigate();
 
   const [signupData, setSignupData] = useState({
     fullName: "",
@@ -27,17 +29,17 @@ const OperatorAuthModal = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-xl mx-4 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden">
 
         {/* Header */}
-        <div className="flex items-center justify-between px-8 py-5 border-b border-gray-100">
-          <h2 className="text-base font-semibold text-gray-800">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h2 className="text-base font-semibold text-gray-800 mx-auto">
             {activeTab === "signup" ? "Sign up as a operator" : "Sign in as a operator"}
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition text-xl font-light"
+            className="text-gray-400 hover:text-gray-600 transition text-lg absolute right-5"
           >
             ✕
           </button>
@@ -50,7 +52,7 @@ const OperatorAuthModal = ({ onClose }) => {
             className={`py-4 text-sm font-medium transition ${
               activeTab === "signup"
                 ? "bg-[#7c5c4e] text-white"
-                : "bg-gray-100 text-gray-500 hover:text-gray-700"
+                : "bg-gray-100 text-gray-400 hover:text-gray-600"
             }`}
           >
             Sign up
@@ -60,7 +62,7 @@ const OperatorAuthModal = ({ onClose }) => {
             className={`py-4 text-sm font-medium transition ${
               activeTab === "signin"
                 ? "bg-[#7c5c4e] text-white"
-                : "bg-gray-100 text-gray-500 hover:text-gray-700"
+                : "bg-gray-100 text-gray-400 hover:text-gray-600"
             }`}
           >
             Sign in
@@ -68,11 +70,12 @@ const OperatorAuthModal = ({ onClose }) => {
         </div>
 
         {/* Form */}
-        <div className="px-8 py-8">
+        <div className="px-6 py-6 bg-gray-50">
           {activeTab === "signup" ? (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
+
               {/* Full name */}
-              <div className="border border-gray-200 rounded-lg px-4 py-2 bg-white">
+              <div className="bg-white border border-gray-200 rounded-lg px-4 py-2">
                 <label className="block text-[10px] text-gray-400 mb-0.5">Your full name</label>
                 <input
                   type="text"
@@ -85,7 +88,7 @@ const OperatorAuthModal = ({ onClose }) => {
               </div>
 
               {/* Email */}
-              <div className="border border-gray-200 rounded-lg px-4 py-2 bg-white">
+              <div className="bg-white border border-gray-200 rounded-lg px-4 py-2">
                 <label className="block text-[10px] text-gray-400 mb-0.5">Your email</label>
                 <input
                   type="email"
@@ -98,7 +101,7 @@ const OperatorAuthModal = ({ onClose }) => {
               </div>
 
               {/* Password */}
-              <div className="border border-gray-200 rounded-lg px-4 py-3 bg-white">
+              <div className="bg-white border border-gray-200 rounded-lg px-4 py-3">
                 <input
                   type="password"
                   name="password"
@@ -110,7 +113,7 @@ const OperatorAuthModal = ({ onClose }) => {
               </div>
 
               {/* Confirm Password */}
-              <div className="border border-gray-200 rounded-lg px-4 py-3 bg-white">
+              <div className="bg-white border border-gray-200 rounded-lg px-4 py-3">
                 <input
                   type="password"
                   name="confirmPassword"
@@ -125,19 +128,21 @@ const OperatorAuthModal = ({ onClose }) => {
               <div className="grid grid-cols-2 gap-3 mt-2">
                 <button
                   onClick={onClose}
-                  className="py-3 rounded-xl bg-gray-100 text-gray-600 text-sm font-medium hover:bg-gray-200 transition"
+                  className="py-3 rounded-xl bg-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
-                <button className="py-3 rounded-xl bg-[#7c5c4e] text-white text-sm font-medium hover:bg-[#6b4e42] transition">
+                <button className="py-3 rounded-xl bg-[#7c5c4e] text-white text-sm font-medium hover:bg-[#6b4e42] transition" onClick={() => { onClose(); navigate("/OperatorUser-Home"); }}>
                   Sign up
                 </button>
               </div>
+
             </div>
           ) : (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
+
               {/* Email */}
-              <div className="border border-gray-200 rounded-lg px-4 py-2 bg-white">
+              <div className="bg-white border border-gray-200 rounded-lg px-4 py-2">
                 <label className="block text-[10px] text-gray-400 mb-0.5">Your email</label>
                 <input
                   type="email"
@@ -150,7 +155,7 @@ const OperatorAuthModal = ({ onClose }) => {
               </div>
 
               {/* Password */}
-              <div className="border border-gray-200 rounded-lg px-4 py-3 bg-white">
+              <div className="bg-white border border-gray-200 rounded-lg px-4 py-3">
                 <input
                   type="password"
                   name="password"
@@ -162,18 +167,18 @@ const OperatorAuthModal = ({ onClose }) => {
               </div>
 
               {/* Remember me + Forgot password */}
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between py-1">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
                     name="remember"
                     checked={signinData.remember}
                     onChange={handleSigninChange}
-                    className="accent-[#7c5c4e] w-3.5 h-3.5"
+                    className="w-3.5 h-3.5 accent-[#7c5c4e]"
                   />
                   <span className="text-sm text-gray-600">Remember me</span>
                 </label>
-                <button className="text-sm text-[#7c5c4e] hover:underline">
+                <button className="text-sm text-gray-500 hover:text-[#7c5c4e] transition">
                   Forgot password ?
                 </button>
               </div>
@@ -182,17 +187,19 @@ const OperatorAuthModal = ({ onClose }) => {
               <div className="grid grid-cols-2 gap-3 mt-2">
                 <button
                   onClick={onClose}
-                  className="py-3 rounded-xl bg-gray-100 text-gray-600 text-sm font-medium hover:bg-gray-200 transition"
+                  className="py-3 rounded-xl bg-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
-                <button className="py-3 rounded-xl bg-[#7c5c4e] text-white text-sm font-medium hover:bg-[#6b4e42] transition">
+                <button className="py-3 rounded-xl bg-[#7c5c4e] text-white text-sm font-medium hover:bg-[#6b4e42] transition" onClick={() => { onClose(); navigate("/user-home"); }}>
                   Sign in
                 </button>
               </div>
+
             </div>
           )}
         </div>
+
       </div>
     </div>
   );
