@@ -1,24 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid,
-  ResponsiveContainer, PieChart, Pie, Cell, Legend,
-} from "recharts";
 import OperatorAuthModal from "./OperatorAuthModal";
-
-const barData = [
-  { day: "01", t: 200 }, { day: "02", t: 150 }, { day: "03", t: 280 },
-  { day: "04", t: 320 }, { day: "05", t: 180 }, { day: "06", t: 250 },
-  { day: "07", t: 160 }, { day: "08", t: 140 }, { day: "09", t: 190 },
-  { day: "10", t: 220 }, { day: "11", t: 170 }, { day: "12", t: 300 },
-];
-
-const pieData = [
-  { name: "Sat", value: 97, color: "#a78bfa" },
-  { name: "Sun", value: 187, color: "#34d399" },
-  { name: "Mon", value: 154, color: "#60a5fa" },
-  { name: "Tue", value: 120, color: "#f472b6" },
-];
+import dashboard from "../../assets/dashboard.png";
 
 const Logo = ({ size = 28 }) => (
   <svg width="50" height="50" viewBox="0 0 636 636" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -65,20 +48,16 @@ const DashboardMockup = () => (
       <div className="grid grid-cols-3 gap-4">
 
         <div className="col-span-2 bg-gray-50 rounded-lg p-3">
-          <p className="text-xs font-semibold mb-2">Ticket sold</p>
+  {/* <p className="text-xs font-semibold mb-2">Dashboard Preview</p> */}
 
-          <ResponsiveContainer width="100%" height={120}>
-            <BarChart data={barData}>
-              <CartesianGrid strokeDasharray="2 2" vertical={false} />
-              <XAxis dataKey="day" />
-              <YAxis />
-              <Bar dataKey="t" fill="#a5b4fc" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+  <img
+    src={dashboard}
+    alt="dashboard"
+    className="w-full h-[120px] object-cover rounded"
+  />
+</div>
 
-        </div>
-
-        <div className="bg-gray-50 rounded-lg p-3">
+        {/* <div className="bg-gray-50 rounded-lg p-3">
           <p className="text-xs font-semibold mb-2">Bookings</p>
 
           <ResponsiveContainer width="100%" height={120}>
@@ -97,7 +76,7 @@ const DashboardMockup = () => (
             </PieChart>
           </ResponsiveContainer>
 
-        </div>
+        </div> */}
       </div>
     </div>
   </div>

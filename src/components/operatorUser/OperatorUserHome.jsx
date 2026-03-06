@@ -133,6 +133,9 @@ export default function OperatorUserHome() {
         setActiveNav(item);
         if (item === "Dashboard") navigate("/OperatorUser-Home");
         if (item === "Events") navigate("/EventsPage");
+        if (item === "Pricing") navigate("/pricing");
+        if (item === "Privacy policy") navigate("/policy");
+        if (item === "FAQ") navigate("/faq");
       }}
       className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
         activeNav === item
